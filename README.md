@@ -59,14 +59,26 @@ make down
 make client
 ```
 
-4. Run Golang script to interact with ClickHouse
+4. Run Golang script to store data in ClickHouse
 
 ```bash
-make go-run
+make go-run-storer
 ```
 
-5. Run NodeJS script to interact with ClickHouse
+5. Run Golang script to query data from ClickHouse
 
 ```bash
-make node-run
+make go-run-asker
+```
+
+6. Run NodeJS script to interact with ClickHouse
+
+```bash
+make ts-run-storer
+```
+
+7. Run NodeJS script to query data from ClickHouse
+
+```bash
+make ts-run-asker
 ```
