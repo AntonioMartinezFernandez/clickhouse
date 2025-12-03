@@ -8,7 +8,7 @@ const batchSize = 1000;
 const clickhouse = new ClickHouse({
   url: 'http://localhost',
   port: 8123,
-  debug: true,
+  debug: false,
   basicAuth: {
     username: 'default',
     password: 'supersecret',

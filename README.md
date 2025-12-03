@@ -9,6 +9,12 @@ This repository contains examples and scripts for working with ClickHouse, a fas
 - NodeJS
 - Basic knowledge of SQL and databases
 
+## Resources
+
+- [ClickHouse Official Documentation](https://clickhouse.com/docs/en/)
+- [ClickHouse TS package](https://www.npmjs.com/package/clickhouse)
+- [ClickHouse Go Client](https://pkg.go.dev/github.com/ClickHouse/clickhouse-go)
+
 ## Getting Started
 
 1. Clone the repository:
