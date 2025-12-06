@@ -88,3 +88,9 @@ make ts-run-storer
 ```bash
 make ts-run-asker
 ```
+
+## Interesting topics
+
+- Try engine alternatives: MergeTree (static data -OLAP-), ReplacingMergeTree (dynamic data -OLTP-) and AgregatingMergeTree (aggregated data)
+- Analyze different data types. Keep an eye in the cardinality
+- Check how efficiently order the columns

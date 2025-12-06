@@ -42,10 +42,15 @@ func Query(ctx context.Context, conn *sql.DB) error {
 	conn.SetConnMaxLifetime(time.Hour)
 
 	queries := []string{
-		`SELECT * FROM sensor_data WHERE read_value > 5 and read_value < 10 LIMIT 5`,
+		// `SELECT * FROM sensor_data WHERE read_value > 5 AND read_value < 10 LIMIT 5`,
+		`SELECT AVG(read_value) AS avg_value FROM sensor_data`,
+		`SELECT MAX(read_value) AS max_value FROM sensor_data`,
+		`SELECT MIN(read_value) AS min_value FROM sensor_data`,
 	}
 
 	for _, query := range queries {
+		start := time.Now()
+
 		rows, err := conn.QueryContext(ctx, query)
 		if err != nil {
 			return err
@@ -73,6 +78,8 @@ func Query(ctx context.Context, conn *sql.DB) error {
 			}
 			fmt.Println()
 		}
+
+		fmt.Println("query duration: ", time.Since(start))
 	}
 
 	return nil

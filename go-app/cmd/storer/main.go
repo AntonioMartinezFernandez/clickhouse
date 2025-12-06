@@ -11,8 +11,8 @@ import (
 )
 
 var (
-	totalEntries = 1000000
-	batchSize    = 10000
+	totalEntries = 10_000_000
+	batchSize    = 1_0000
 )
 
 func main() {
@@ -55,6 +55,13 @@ func Preparation(conn *sql.DB) error {
 	conn.SetMaxOpenConns(10)
 	conn.SetConnMaxLifetime(time.Hour)
 
+	/*
+		Try engine alternatives: MergeTree (static data -OLAP-), ReplacingMergeTree (dynamic data -OLTP-) and AgregatingMergeTree (aggregated data)
+
+		Analyze different data types. Keep an eye in the cardinality
+
+		Check how efficiently order the columns
+	*/
 	queries := []string{
 		`DROP TABLE IF EXISTS sensor_data`,
 		`CREATE TABLE sensor_data (
@@ -109,5 +116,5 @@ func BatchInsert(conn *sql.DB, startID int) error {
 type SensorData struct {
 	RandomNumber   int     `faker:"boundary_start=1, boundary_end=1000"`
 	SensorLocation string  `faker:"word"`
-	ReadValue      float64 `faker:"amount"`
+	ReadValue      float64 `faker:"boundary_start=-10, boundary_end=50"`
 }
